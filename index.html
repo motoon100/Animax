@@ -4,480 +4,431 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Animatix</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <title>Animax | عالم الكرتون والأنمي</title>
+    <!-- خط القاهرة يدعم اللغة العربية بشكل ممتاز -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <style>
-         :root {
-            --bg1: #0a0f5a;
-            --bg2: #10107a;
-            --accent: #2b5bff;
-            --card: #0f1b5f;
-            --glass: rgba(255, 255, 255, 0.06);
-            --white: #ffffff;
-            --muted: rgba(255, 255, 255, 0.85);
+        :root {
+            --primary: #3b82f6; /* لون أزرق مستوحى من شعاركم */
+            --accent: #60a5fa;
+            --dark-bg: #020617;
+            --card-bg: rgba(15, 23, 42, 0.8); /* خلفية البطاقة الزجاجية */
+            --glass-border: rgba(255, 255, 255, 0.15);
+            --white: #f8fafc;
         }
-        
+
+        /* إعادة تعيين أساسية */
         * {
-            box-sizing: border-box
+            box-sizing: border-box;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
-        html,
+
         body {
-            height: 100%;
             margin: 0;
-            font-family: 'Cairo', sans-serif;
-            background: linear-gradient(180deg, var(--bg1), #000);
-            color: var(--white)
-        }
-        
-        .wrap {
+            font-family: 'Cairo', sans-serif, 'Inter', sans-serif; /* إضافة Inter كخط احتياطي */
+            /* خلفية فضائية عميقة (Deep Space) */
+            background: radial-gradient(circle at top, #1e293b 0%, #020617 100%);
+            color: var(--white);
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 32px 16px
+            padding: 20px 0;
         }
-        
-        .card {
-            width: 360px;
-            max-width: 92vw;
-            background: linear-gradient(180deg, #07104a 0%, #0b1b7a 70%);
-            border-radius: 18px;
-            padding: 18px 18px 26px;
-            box-shadow: 0 10px 30px rgba(2, 6, 40, 0.6);
-            position: relative;
-            overflow: hidden
-        }
-        
-        .header {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+
+        .container {
+            max-width: 500px;
+            width: 95%;
+            padding: 40px 0;
             text-align: center;
-            margin-bottom: 10px
+        }
+
+        /* تصميم البطاقة الرئيسية (Card) */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 10;
         }
         
-        .download-title {
-            background: linear-gradient(90deg, #06123f, #162a9a);
-            width: 100%;
-            padding: 10px 12px;
-            border-radius: 10px;
-            font-weight: 800;
-            letter-spacing: 1px;
-            font-size: 20px
+        /* تأثير تموضع الشعار خارج وداخل البطاقة */
+        .logo-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: -90px auto 20px; /* سحب الشعار للأعلى */
+            z-index: 20;
         }
-        
-        .logo-wrap {
-            margin-top: 12px;
-            margin-bottom: 8px
-        }
-        
-        .logo {
-            width: 190px;
-            height: 120px;
-            border-radius: 14px;
-            overflow: hidden
-        }
-        
-        .logo img {
+
+        .logo-container img {
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            display: block
+            object-fit: contain;
+            border-radius: 25px;
+            /* تم تعديل هذا الجزء بناءً على طلبك: إزالة الخلفية، الإطار، والظل */
+            background: transparent; 
+            padding: 0; 
+            box-shadow: none; 
+            border: none;
         }
-        
-        .desc {
-            font-size: 14px;
-            color: var(--muted);
-            line-height: 1.5;
-            margin: 12px 10px
+
+        .badge {
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid var(--primary);
+            color: var(--accent);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 15px;
         }
-        
-        .features {
-            margin-top: 6px
+
+        h1 {
+            font-size: 28px;
+            font-weight: 900;
+            margin: 0 0 10px;
+            color: #fff;
         }
-        
-        .features-title {
-            font-size: 26px;
+
+        .download-counter {
+            /* تصميم مميز لعداد التحميل */
+            background: linear-gradient(90deg, #1d4ed8, #3b82f6);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 15px;
             font-weight: 800;
-            text-align: center;
-            margin: 6px 0 12px
+            display: inline-block;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
         }
-        
-        .feat {
-            background: rgba(0, 0, 0, 0.18);
-            border-radius: 12px;
-            padding: 12px 14px;
+
+        /* قائمة المميزات */
+        .features-list {
+            text-align: right;
+            margin-bottom: 30px;
+        }
+
+        .feature-item {
             display: flex;
+            gap: 15px;
+            margin-bottom: 18px;
+            background: rgba(255,255,255,0.05); /* خلفية خفيفة لكل ميزة */
+            padding: 12px;
+            border-radius: 15px;
             align-items: center;
-            gap: 12px;
-            margin: 10px 6px
         }
-        
-        .num {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: linear-gradient(180deg, #1f3be0, #1a2dd3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700
+
+        .feature-item span {
+            font-size: 20px;
+            flex-shrink: 0;
         }
-        
-        .feat-text {
-            flex: 1;
-            font-size: 14px;
-            color: var(--white);
-            line-height: 1.35
+
+        .feature-item div {
+            text-align: right;
         }
-        
-        .ctas {
-            margin-top: 14px;
+
+        .feature-item div b {
+            display: block;
+            font-size: 15px;
+            color: var(--accent);
+            margin-bottom: 2px;
+        }
+
+        .feature-item div p {
+            margin: 0;
+            font-size: 13px;
+            color: #94a3b8;
+        }
+
+        /* الأزرار (CTAs) - (لم تتغير) */
+        .cta-group {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            padding: 10px
+            gap: 12px;
         }
-        
-        .btn {
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            padding: 12px;
-            border-radius: 10px;
-            background: linear-gradient(90deg, #1534d7, #2b66ff);
+
+        .btn-main {
+            background: linear-gradient(135deg, #1d4ed8 0%, #3b82f6 100%);
             color: white;
             text-decoration: none;
-            font-weight: 700;
-            box-shadow: 0 6px 18px rgba(43, 102, 255, 0.18);
-            border: 2px solid rgba(255, 255, 255, 0.06);
+            padding: 16px;
+            border-radius: 18px;
+            font-weight: 800;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.4);
             cursor: pointer;
-            transition: transform 0.15s ease
         }
-        
-        .btn.secondary {
-            background: transparent;
-            border: 2px solid rgba(255, 255, 255, 0.12);
-            color: var(--white);
-            font-weight: 600
+
+        .btn-main:active { transform: scale(0.98); }
+
+        .btn-secondary {
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            padding: 16px; 
+            border-radius: 18px;
+            font-weight: 800;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
         }
-        
-        .btn.small {
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 14px
+
+        .btn-secondary:hover {
+            background: rgba(15, 23, 42, 1);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.15);
         }
-        
-        .btn.glass::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -75px;
-            width: 50px;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.4);
-            transform: skewX(-20deg);
-            animation: glassShine 3s infinite;
+        .btn-secondary:active { transform: scale(0.98); }
+
+
+        .btn-social {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            color: #cbd5e1;
+            text-decoration: none;
+            padding: 12px;
+            border-radius: 14px;
+            font-size: 14px;
+            font-weight: 600;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
         }
-        
-        @keyframes glassShine {
-            0% {
-                left: -75px;
-            }
-            50% {
-                left: 120%;
-            }
-            100% {
-                left: 120%;
-            }
+
+        .btn-social:hover { background: rgba(255, 255, 255, 0.1); }
+
+        .social-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
         }
-        
-        .btn:active {
-            transform: scale(0.94);
-        }
-        
-        .btn.loading {
-            animation: pressAnim 650ms ease forwards
-        }
-        
-        @keyframes pressAnim {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 6px 18px rgba(43, 102, 255, 0.18)
-            }
-            50% {
-                transform: scale(0.95);
-                box-shadow: 0 3px 10px rgba(43, 102, 255, 0.12);
-                filter: brightness(0.98)
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-        
-        .btn .loader {
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.9);
-            opacity: 0;
-            transform: scale(0.6);
-            margin-left: 6px
-        }
-        
-        .btn.loading .loader {
-            animation: loaderPop 800ms ease-in-out infinite
-        }
-        
-        @keyframes loaderPop {
-            0% {
-                opacity: 0;
-                transform: scale(0.6)
-            }
-            30% {
-                opacity: 1;
-                transform: scale(1)
-            }
-            70% {
-                opacity: 0.5;
-                transform: scale(0.85)
-            }
-            100% {
-                opacity: 0;
-                transform: scale(0.6)
-            }
-        }
-        
+
         .footer {
-            text-align: center;
-            font-size: 20px;
-            color: var(--muted);
-            margin-top: 12px
+            margin-top: 25px;
+            font-size: 12px;
+            color: #475569;
         }
-        /* موبايل صغير */
-        
-        @media (max-width:420px) {
-            .logo {
-                width: 150px;
-                height: 100px
-            }
-            .download-title {
-                font-size: 18px
-            }
-            .card {
-                padding: 14px
-            }
+
+        /* Loading Animation - Loader */
+        .loader {
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.4);
+            border-top: 3px solid #fff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            display: none;
         }
-        /* تابلت */
-        
-        @media (min-width: 768px) {
+
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+        .loading .loader { display: block; }
+        .loading .btn-text { display: none; }
+
+        /* Responsive Design for smaller screens */
+        @media (max-width: 480px) {
             .card {
-                width: 520px;
-                padding: 24px 28px 36px;
+                padding: 20px;
+                border-radius: 20px;
             }
-            .download-title {
+            .logo-container {
+                width: 120px;
+                height: 120px;
+                margin: -70px auto 15px;
+            }
+            h1 {
                 font-size: 24px;
-                padding: 14px;
             }
-            .logo {
-                width: 240px;
-                height: 150px;
-            }
-            .desc {
-                font-size: 16px;
-                margin: 14px 12px;
-            }
-            .features-title {
-                font-size: 28px;
-            }
-            .feat-text {
-                font-size: 16px;
-            }
-            .btn {
+            .btn-main {
                 font-size: 16px;
                 padding: 14px;
             }
-        }
-        /* لابتوب متوسط */
-        
-        @media (min-width: 1024px) {
-            .wrap {
-                padding: 40px 0;
+            .btn-secondary {
+                font-size: 16px;
+                padding: 14px;
             }
-            .card {
-                width: 640px;
-                padding: 30px 36px 44px;
-            }
-            .download-title {
-                font-size: 28px;
-            }
-            .logo {
-                width: 300px;
-                height: 180px;
-            }
-            .desc {
-                font-size: 18px;
-            }
-            .features-title {
-                font-size: 30px;
-            }
-            .feat-text {
-                font-size: 18px;
-            }
-            .btn {
-                font-size: 18px;
-                padding: 16px;
-            }
-            .footer {
+            .feature-item div b {
                 font-size: 14px;
             }
-        }
-        /* شاشات كبيرة جدًا (2K) */
-        
-        @media (min-width: 1440px) {
-            .card {
-                width: 720px;
-                padding: 36px 44px 50px;
+            .feature-item div p {
+                font-size: 12px;
             }
-            .download-title {
-                font-size: 32px;
+            .social-row {
+                grid-template-columns: 1fr;
             }
-            .logo {
-                width: 340px;
-                height: 200px;
-            }
-            .desc {
-                font-size: 20px;
-            }
-            .features-title {
-                font-size: 34px;
-            }
-            .feat-text {
-                font-size: 20px;
-            }
-            .btn {
-                font-size: 20px;
-                padding: 18px;
-            }
-            .footer {
+            .btn-social {
                 font-size: 16px;
-            }
-        }
-        /* شاشات 4K */
-        
-        @media (min-width: 1920px) {
-            .wrap {
-                padding: 60px 0;
-            }
-            .card {
-                width: 900px;
-                padding: 44px 60px 66px;
-            }
-            .download-title {
-                font-size: 38px;
-            }
-            .logo {
-                width: 400px;
-                height: 240px;
-            }
-            .desc {
-                font-size: 22px;
-            }
-            .features-title {
-                font-size: 38px;
-            }
-            .feat-text {
-                font-size: 22px;
-            }
-            .btn {
-                font-size: 22px;
-                padding: 20px;
-            }
-            .footer {
-                font-size: 18px;
             }
         }
     </style>
 </head>
 
 <body>
-    <div class="wrap">
-        <div class="card" role="main">
-            <div class="header">
-                <div class="download-title">تحميل التطبيق</div>
-                <div class="logo-wrap">
-                    <div class="logo">
-                        <img src="logo.png" alt="شعار التطبيق" id="appLogo" />
+    <div class="container">
+        <div class="card">
+            <!-- Header (Logo, Badge, Title) -->
+            <div class="logo-container">
+                <img src="logo.png" alt="شعار تطبيق انيماكس">
+            </div>
+            
+            <!-- تحديث رقم الإصدار إلى V10.3 -->
+            <div class="badge">النسخة الرسمية V10.3</div>
+            <h1>تطبيق انيماكس</h1>
+            
+            <!-- إضافة نص تعريفي مستوحى من الفيديو -->
+            <p style="color: var(--accent); font-size: 16px; font-weight: 600; margin-bottom: 20px;">
+                تجربة مشاهدة أنمي وكرتون أسطورية بواجهة مصممة بعناية لتلبي جميع احتياجاتك.
+            </p>
+
+            <!-- تحديث تفاصيل التطبيق: فريق التطوير والحجم -->
+            <p style="color: #94a3b8; font-size: 14px; margin-top: 0;">بوابة عالم الكرتون والأنمي | فريق التطوير: Animax team | الحجم: 100 MB</p>
+            
+            <!-- عداد التحميلات المحدث -->
+            <div class="download-counter">📥 +11,500 تحميل موثوق</div>
+
+            <!-- Features Section - تم تحديث القائمة للتركيز على الوسائط المتعددة (الصور والفيديوهات) -->
+            <div class="features-list">
+                <div class="feature-item">
+                    <span>🚀</span>
+                    <div>
+                        <b>أداء فائق واستجابة سريعة</b>
+                        <p>تم تحسين التطبيق ليقوم بتحميل الحلقات والصفحات بأسرع ما يمكن وبكفاءة عالية.</p>
                     </div>
                 </div>
-                <div class="desc">تطبيق انماكس افضل تطبيق لمشاهده افلام و مسلسلات الكرتون بالدبلجه و الترجمه العربيه بجوده عاليه</div>
+                <div class="feature-item">
+                    <span>🎨</span>
+                    <div>
+                        <b>تخصيص كامل للواجهة</b>
+                        <p>اختر من بين عشرات الثيمات والألوان لتجربة مستخدم شخصية وفريدة.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span>🖼️</span>
+                    <div>
+                        <b>جودة فائقة للصور والخلفيات</b>
+                        <p>استعراض جميع صور وبوسترات الأنمي والكرتون بدقة 4K عالية الوضوح.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span>📺</span>
+                    <div>
+                        <b>مشغل فيديو متقدم و Casting</b>
+                        <p>دعم المشاهدة بجودة عالية جداً، وخاصية البث (Casting) على الشاشات الكبيرة.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <span>🛡️</span>
+                    <div>
+                        <b>أمان وحماية الخصوصية</b>
+                        <p>نظام حماية متقدم مع تشفير قوي لحماية بياناتك ومعلوماتك الشخصية.</p>
+                    </div>
+                </div>
             </div>
-            <div class="features">
-                <div class="features-title">التحميلات : +10100</div>
-                <div class="features-title">المميزات</div>
-                <div class="feat">
-                    <div class="num">1</div>
-                    <div class="feat-text">مشاهده مجانيه و بدون اعلانات مزعجه</div>
+
+            <!-- Call To Action Buttons -->
+            <div class="cta-group">
+                <!-- الزر الأساسي -->
+                <a href="#" id="dlBtn" class="btn-main">
+                    <span class="btn-text">تنزيل التطبيق الآن (APK)</span>
+                    <div class="loader"></div>
+                </a>
+                
+                <!-- الزر الثانوي (Telegram) -->
+                <a href="https://t.me/Animax_cartoon" class="btn-secondary" target="_blank">
+                    <span style="font-size: 1.2em; line-height: 1;">⭐</span> انضم لقناة التلجرام الرسمية
+                </a>
+
+                <div class="social-row">
+                    <!-- أزرار التواصل الاجتماعي الصغيرة -->
+                    <a href="https://www.instagram.com/animaster_channel" class="btn-social" target="_blank">📸 انستغرام</a>
+                    <a href="https://youtube.com/@saixsaix-r4n" class="btn-social" target="_blank">🎬 يوتيوب</a>
                 </div>
-                <div class="feat">
-                    <div class="num">2</div>
-                    <div class="feat-text">مكتبه ضخمه من افلام و مسلسلات الكرتون بالدبلجه و الترجمه العربيه</div>
-                </div>
-                <div class="feat">
-                    <div class="num">3</div>
-                    <div class="feat-text">يعمل لكل الاجهزه القويه و الضعيفه</div>
-                </div>
-            </div>
-            <div class="ctas">
-                <a id="downloadBtn" class="btn" href="#" role="button" aria-pressed="false">تنزيل التطبيق <span class="loader" aria-hidden="true"></span></a>
-                <a id="instagramBtn" class="btn secondary" href="https://www.instagram.com/its.saifx?igsh=MmhsZ21rdGdxZmhy" target="_blank">حساب الانستغرام</a>
-                <a id="youtubeBtn" class="btn secondary" href="https://youtube.com/@saixsaix-r4n?si=JwftrWJa2Bzqmj5Y" target="_blank">قناة اليوتيوب</a>
-                <a id="telegramBtn" class="btn secondary glass" href="https://t.me/Animax_cartoon" target="_blank">انضم إلى قناة التلجرام</a>
             </div>
         </div>
-        <div class="footer">made by Mohammed Amin</div>
-        <a id="instagram2Btn" class="btn secondary" href="https://www.instagram.com/animaster_channel?igsh=MWt6emI2NTFtNTcxYQ==" target="_blank">حساب الانستغرام</a>
+
+        <div class="footer">
+            <p>تطوير بواسطة Mohammed Amin | © جميع الحقوق محفوظة لفريق انيماكس 2024</p>
+        </div>
     </div>
-<script>
-    const links = {
-        download: 'https://drive.google.com/file/d/1X9my65QXY5fOg-5X6LSbO9uYN_gs1gg-/view?usp=drivesdk',
-        instagram: 'https://www.instagram.com/animaster_channel?igsh=MWt6emI2NTFtNTcxYQ==',
-        youtube: 'https://youtube.com/@saixsaix-r4n?si=JwftrWJa2Bzqmj5Y',
-        telegram: 'https://t.me/Animax_cartoon',
-        instagram2Btn: 'https://www.instagram.com/animaster_channel?igsh=MWt6emI2NTFtNTcxYQ=='
-    };
 
-    const downloadBtn = document.getElementById('downloadBtn');
-    const downloadsText = document.querySelector('.features-title'); // أول عنصر فيه "التحميلات"
-    let currentDownloads = 10100; // الرقم الأساسي
+    <!-- Script for download and loading animation -->
+    <script>
+        // رابط ملف التحميل المباشر 
+        const downloadLink = 'https://drive.google.com/file/d/1X9my65QXY5fOg-5X6LSbO9uYN_gs1gg-/view?usp=drivesdk'; 
+        const downloadButton = document.getElementById('dlBtn');
 
-    let animTimeout = null;
+        // رسالة إشعار مؤقتة بدلاً من alert/confirm
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background-color: #10b981;
+                color: white;
+                padding: 10px 20px;
+                border-radius: 10px;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+                font-family: 'Cairo', sans-serif;
+                font-size: 14px;
+                z-index: 1000;
+                opacity: 0;
+                transition: opacity 0.5s, transform 0.5s;
+                transform: translateX(100%);
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
 
-    downloadBtn.addEventListener('click', (e) => {
-        e.preventDefault();
+            // إظهار الإشعار
+            setTimeout(() => {
+                notification.style.opacity = '1';
+                notification.style.transform = 'translateX(0)';
+            }, 10);
 
-        if (downloadBtn.classList.contains('loading')) return;
+            // إخفاء الإشعار بعد 3 ثوانٍ
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => notification.remove(), 500);
+            }, 3000);
+        }
 
-        downloadBtn.classList.add('loading');
-        downloadBtn.setAttribute('aria-pressed', 'true');
+        // التعامل مع ضغطة زر التحميل
+        downloadButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // منع الضغط المتكرر أثناء التحميل
+            if (downloadButton.classList.contains('loading')) return;
 
-        // زيادة العدد
-        currentDownloads++;
-        downloadsText.textContent = `التحميلات : +${currentDownloads}`;
+            // بدء انيميشن التحميل
+            downloadButton.classList.add('loading');
+            
+            // محاكاة تأخير بسيط للتحميل ثم التوجيه للرابط
+            setTimeout(() => {
+                // توجيه المتصفح إلى رابط التحميل
+                window.open(downloadLink, '_blank');
+                
+                // إظهار رسالة نجاح
+                showNotification('بدء التحميل... شكرًا لاختيارك Animax!');
 
-        animTimeout = setTimeout(() => {
-            window.open(links.download, '_blank');
-            downloadBtn.classList.remove('loading');
-            downloadBtn.setAttribute('aria-pressed', 'false');
-        }, 700);
-    });
-</script>
-
+                // إزالة انيميشن التحميل
+                downloadButton.classList.remove('loading');
+            }, 1500); // 1.5 ثانية انتظار
+        });
+    </script>
 </body>
-
 </html>
